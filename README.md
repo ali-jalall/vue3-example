@@ -36,7 +36,7 @@ app.mount("#app");
 ```
 
 ### Multi-root templates
-If you are Vue 2.0 developer you will notice the error in the code down below, that's right there's no need for your template to have one root element 
+If you are Vue 2.0 developer you will notice the error in the code down below, that's right no longer compulsory to have one root element thanks to a feature called fragments 
 
 ```sh
 <template>
@@ -46,4 +46,99 @@ If you are Vue 2.0 developer you will notice the error in the code down below, t
     You can see that this template has multiple root elements
   </p>
 </template>
+```
+
+### Refactoring with Composition API
+The most intersting feature (for me) is the Composition API. This new API allows you to define component functionality using a setup function rather than with properties you add to the component definition object.
+
+
+```sh
+<template>
+  <h3>Vue is the Best</h3>
+  <img style="width: 100px" src="./logo.png"/> <br />
+  <button @click="increaseFans">we have {{ fan }} fans.</button>
+  <p>
+    You can see that this template has multiple root elements
+  </p>
+</template>
+<script>
+import Modal from "./components/Modal.vue";
+import { ref } from "vue";
+export default {
+  setup() {
+    const fan = ref(0);
+    const increaseFans = () => {
+      fan.value++
+    };
+    return {
+      fan,
+      increaseFans,
+    };
+  },
+};
+</script>
+```
+
+Notice that the Composition API only affects the way we define the component functionality, not the way we render it.
+and it's optional for you you can totaly ignore it
+
+### ``` Setup() ``` method
+First when we import ``` ref ``` it's function that allow us to define a reactive variable ``` fan ``` 
+The ``` increaseFans ``` method is just a plain javascript method. notice that the way we change the ``` fan ``` we need to change it's sub-propery ``` value ``` that's why when we create reactive variable using ``` ref ``` that variable will be wrapped in an object, that's necessary to retain their reactivity.
+Finally we returned ``` fan ``` and ``` increaseFans ``` from the ``` setup ``` method, as these are the values that get passed to the template when it's rendered.
+
+
+### Emitting an event
+Let's create a component called ``` Info ``` and toggle it in ``` App.vue ``` by variable called ``` showInfo ``` and method ``` toggleInfo ``` 
+
+``` sh
+<template>
+  ...
+  <button @click="toggleInfo">More Details</button>
+  <info v-if="showInfo">
+    Here are some detailsLorem Ipsum is simply dummy text of the printing and
+    typesetting industry. Lorem Ipsum has been the industry's standard dummy
+    text ever since the 1500s
+  </info>
+</template>
+<script>
+import { ref } from "vue";
+import Info from "./components/Info.vue";
+export default {
+  components: { Info },
+  setup() {
+    ...
+    const showInfo = ref(false);
+    const toggleInfo = () => {
+      showInfo.value = !showInfo.value;
+    };
+    return {
+      showInfo,
+      toggleInfo,
+    };
+  },
+};
+</script>
+```
+So far so good
+Let's take a look at ``` Info.vue ```
+
+```sh
+<template>
+  <div class="info">
+    <slot></slot>
+    <button @click="$emit('close-details')">Close</button>
+  </div>
+</template>
+```
+
+So far, this feature is identical as it would be in Vue 2. However, in Vue 3 it's now recommended that you explicitly state a component's events using the new ``` emits ``` component option. Just like with props, you can simply create an array of strings to name each event the component will emit.
+
+```sh
+<template> ... </template>
+<script>
+export default {
+  emits: [ "close-details" ]
+}
+</script>
 ```
