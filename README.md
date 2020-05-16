@@ -83,8 +83,8 @@ Notice that the Composition API only affects the way we define the component fun
 and it's optional for you you can totaly ignore it
 
 ### ``` Setup() ``` method
-First when we import ``` ref ``` it's function that allow us to define a reactive variable ``` fan ``` 
-The ``` increaseFans ``` method is just a plain javascript method. notice that the way we change the ``` fan ``` we need to change it's sub-propery ``` value ``` that's why when we create reactive variable using ``` ref ``` that variable will be wrapped in an object, that's necessary to retain their reactivity.
+First when we import ``` ref ``` it is function that allow us to define a reactive variable ``` fan ```.  
+And The ``` increaseFans ``` method is just a plain javascript method. notice that the way we change the ``` fan ``` we need to change it's sub-propery ``` value ``` that's why when we create reactive variable using ``` ref ``` that variable will be wrapped in an object, that's necessary to retain their reactivity.
 Finally we returned ``` fan ``` and ``` increaseFans ``` from the ``` setup ``` method, as these are the values that get passed to the template when it's rendered.
 
 
@@ -142,3 +142,35 @@ export default {
 }
 </script>
 ```
+
+### Styling slot content
+Styling for Content, i have thought of everything they can make to improve Vue.js but i have never thought of styling a slot content. Alright let's see.
+Before we use ``` scoped ``` to make our style scoped for a specific component
+
+```sh
+<template>...</template>
+<script>...</script>
+<style scoped>
+  h3 {
+    font-style: italic;
+  }
+</style>
+```
+If you try this, you'll see that it doesn't work. Because the scoped styling is determined at compile time so the slot content sill belong to the parent
+
+Here comes the new feature ``` ::v-slotted() ``` allowing you to target a slot content with scoped rules in the component providing the slot.
+
+```sh
+<style scoped>
+  ::v-slotted(p) {
+    font-style: italic;
+  }
+</style>
+```
+
+### There's More
+There's more features that i didn't mention above. Here go ahead you can create your own repo and mention them
+
+
+Vue.js is my favorite library for building web interfaces, it provides a great features to do whatever you want
+That's why it's imprtant to follow up with all the new technology released 
