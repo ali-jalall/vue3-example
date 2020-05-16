@@ -1,10 +1,9 @@
 <template>
-  <button @click="toggleModalState">Open modal</button>
-  <teleport to="#modal-wrapper">
-    <modal v-if="modalState" @click="toggleModalState">
-      <p>Hello, I'm a modal window.</p>
-    </modal>
-  </teleport>
+  <h3>Vue is the Best</h3>
+  <img src="./logo.png"/>
+  <p>
+    You can see that this template has multiple root elements
+  </p>
 </template>
 <script>
 import Modal from "./components/Modal.vue";
