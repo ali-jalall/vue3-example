@@ -9,3 +9,8 @@ export default {
   emits: [ "close" ]
 }
 </script>
+<style scoped>
+  ::v-slotted(p) {
+    font-style: italic;
+  }
+</style>
