@@ -1,16 +1,13 @@
-# vue-next-webpack-preview
+# vue3-webpack-preview
 
-> Minimal webpack setup for Vue 3 (beta) 
+> Webpack setup for Vue 3 
 
-This is for preview purposes only. There might be bugs and undocumented behavior differences from v2, which are expected.
+This is for preview only. You might find some bugs and undocumented behavior, which are totaly expected
 
-Also note that if you are using VSCode, Vetur isn't updated to take advantage of Vue 3's typing yet so intellisense in Vue files may not be fully functional (especially in templates).
-
-### Prerequisites
-- Node & NPM
 
 ### Install
 ```sh
+git clone https://github.com/ali-jalall/vue3-example.git
 npm install
 ```
 ### Usage
@@ -18,9 +15,4 @@ npm install
 ```sh
 # run dev server at localhost:8080
 npm run dev
-```
-##### Build
-```sh
-# transpile js for deployment
-npm run build
 ```
