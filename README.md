@@ -21,3 +21,13 @@ npm run dev
 # New Features
 
 ### Creating a new Vue 3 app
+```sh
+import { createApp } from "vue";
+
+const app = createApp({
+  // root instance definition
+});
+
+app.mount("#app");
+
+```
