@@ -21,6 +21,10 @@ npm run dev
 # New Features
 
 ### Creating a new Vue 3 app
+The way we create a new App has changed, instead of using ```sh new Vue()``` 
+Now we can import createApp method 
+Then we call this method, passing our vue instance definition object, and assign it to variable app
+Next, we'll call ```sh mount() ``` method and pass our mount element
 ```sh
 import { createApp } from "vue";
 
