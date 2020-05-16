@@ -168,9 +168,6 @@ Here comes the new feature ``` ::v-slotted() ``` allowing you to target a slot c
 </style>
 ```
 
-### There's More
-There's more features that i didn't mention above. Here go ahead you can create your own repo and mention them
-
-
-Vue.js is my favorite library for building web interfaces, it provides a great features to do whatever you want
-That's why it's imprtant to follow up with all the new technology released 
+### There is More
+The features mentioned above are the best features for me so i create this little project to explain them
+but there's more of course and there will be more
