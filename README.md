@@ -17,3 +17,7 @@ npm install
 # will run your server at localhost:8080
 npm run dev
 ```
+
+# New Features
+
+### Creating a new Vue 3 app
